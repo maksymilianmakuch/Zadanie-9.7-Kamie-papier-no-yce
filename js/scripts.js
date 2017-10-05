@@ -75,35 +75,37 @@ function playerPick(playerPick) {
     playerPickElem.innerHTML = playerPick;
     computerPickElem.innerHTML = computerPick;
 
-    checkRoundWinner(playerPick, computerPick);
+    checkRoundWinner(playerPick, computerPick); //nieszczęsna linijka-funkcja
 }
 
 function checkRoundWinner(playerPick, computerPick) {
-  playerResultElem.innerHTML = computerResultElem.innerHTML = '';
+  	playerResultElem.innerHTML = computerResultElem.innerHTML = '';
 
-  var winnerIs = 'player';
+  	var winnerIs = 'player';
 
-    if (playerPick == computerPick) {
-        winnerIs = 'noone';
-    } else if (
-        (computerPick == 'rock' &&  playerPick == 'scissors') ||
-        (computerPick == 'scissors' &&  playerPick == 'paper') ||
-        (computerPick == 'paper' &&  playerPick == 'rock')) {
+	    if (playerPick == computerPick) {
+	        winnerIs = 'noone';
+	    } else if (
+	        (computerPick == 'rock' &&  playerPick == 'scissors') ||
+	        (computerPick == 'scissors' &&  playerPick == 'paper') ||
+	        (computerPick == 'paper' &&  playerPick == 'rock')) {
 
-        winnerIs = 'computer';
-    }
+	        winnerIs = 'computer';
+	    }
 
-    if (winnerIs == 'player') {
-        playerResultElem.innerHTML = "Win!";
-        player.score++;
-    } else if (winnerIs == 'computer') {
-        computerResultElem.innerHTML = "Win!";
-        computer.score++;
-    }
+	    if (winnerIs == 'player') {
+	        playerResultElem.innerHTML = "Win!";
+	        player.score++;
+	    } else if (winnerIs == 'computer') {
+	        computerResultElem.innerHTML = "Win!";
+	        computer.score++;
+	    }
 
 }
-
+//Czy jednak tu powinna się znajdować/dublować playerPick?
 function setGamePoints() {
     playerPointsElem.innerHTML = player.score;
     computerPointsElem.innerHTML = computer.score;
 }
+
+/*
