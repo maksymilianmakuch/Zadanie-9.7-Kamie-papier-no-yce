@@ -1,6 +1,7 @@
 var newGameBtn = document.getElementById('js-newGameButton');
 
 newGameBtn.addEventListener('click', newGame);
+
 var pickRock = document.getElementById('js-playerPick_rock'),
     pickPaper = document.getElementById('js-playerPick_paper'),
     pickScissors = document.getElementById('js-playerPick_scissors');
@@ -9,7 +10,7 @@ pickRock.addEventListener('click', function() { playerPick('rock') });
 pickPaper.addEventListener('click', function() { playerPick('paper') });
 pickScissors.addEventListener('click', function() { playerPick('scissors') });
 
-var gameState = 'notStarted',  //started // ended
+var gameState = 'notStarted', //'started', 'ended'] //Czy tablica tu ma być?
     player = {
         name: '',
         score: 0
@@ -56,10 +57,10 @@ function newGame() {
   }
 
 }
-function playerPick(playerPick) {
+/*function playerPick(playerPick) {
     console.log(playerPick);
 }
-
+*/
 function getComputerPick() {
     var possiblePicks = ['rock', 'paper', 'scissors'];
     return possiblePicks[Math.floor(Math.random()*3)];
@@ -75,8 +76,10 @@ function playerPick(playerPick) {
     playerPickElem.innerHTML = playerPick;
     computerPickElem.innerHTML = computerPick;
 
-    checkRoundWinner(playerPick, computerPick); //nieszczęsna linijka-funkcja
+    checkRoundWinner(playerPick, computerPick); 
+    setGamePoints();
 }
+
 
 function checkRoundWinner(playerPick, computerPick) {
   	playerResultElem.innerHTML = computerResultElem.innerHTML = '';
@@ -102,10 +105,22 @@ function checkRoundWinner(playerPick, computerPick) {
 	    }
 
 }
-//Czy jednak tu powinna się znajdować/dublować playerPick?
+
 function setGamePoints() {
     playerPointsElem.innerHTML = player.score;
     computerPointsElem.innerHTML = computer.score;
 }
 
-/*
+function checkResult () { 
+	if (player.score = 10) {
+		alert(player.name + " win!");
+		gameState = 'ended';
+		setGameElements();
+	} else if (computer.score = 10) {
+		alert("Computer win!");
+		gameState = 'ended';
+		setGameElements();
+	}
+	
+}
+checkResult();
